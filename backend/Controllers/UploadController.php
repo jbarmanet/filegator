@@ -66,8 +66,9 @@ class UploadController
         $file = $request->files->get('file');
 
         $overwrite_on_upload = (bool) $this->config->get('overwrite_on_upload', false);
-
-        if (! $file || ! $file->isValid() || $file->getSize() > $this->config->get('frontend_config.upload_max_size')) {
+        var_dump($this->storage->getRemainingSpace());
+        var_dump( $file->getSize());
+        if (! $file || ! $file->isValid() || $file->getSize() > $this->config->get('frontend_config.upload_max_size') || $file->getSize() > $this->storage->getRemainingSpace()) {
             return $response->json('Bad file', 422);
         }
 
