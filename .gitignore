@@ -32,3 +32,4 @@ tags
 *.sw*
 .nova
 .nova/*
+instructions.txt
