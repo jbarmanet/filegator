@@ -26,6 +26,9 @@
         <a v-if="!is('guest')" class="navbar-item profile" @click="profile">
           {{ this.$store.state.user.name }}
         </a>
+        <a v-if="is('admin')" class="navbar-item storage" @click="storage">
+          {{ lang('Storage') }}
+        </a>
         <a v-if="!is('guest')" class="navbar-item logout" @click="logout">
           {{ lang('Logout') }}
         </a>
@@ -36,6 +39,7 @@
 
 <script>
 import Profile from './Profile'
+import Storage from './Storage'
 import api from '../../api/api'
 
 export default {
@@ -77,6 +81,13 @@ export default {
         parent: this,
         hasModalCard: true,
         component: Profile,
+      })
+    },
+    storage() {
+      this.$modal.open({
+        parent: this,
+        hasModalCard: true,
+        component: Storage,
       })
     },
   }

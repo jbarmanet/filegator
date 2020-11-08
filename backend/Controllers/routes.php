@@ -267,4 +267,14 @@ return [
             'read', 'write',
         ],
     ],
+    [
+        'route' => [
+            'GET', '/getstorageinfo', '\Filegator\Controllers\FileController@storageInfo',
+        ],
+        'roles' => [
+            'admin',
+        ],
+        'permissions' => [
+        ],
+    ],
 ];
