@@ -211,6 +211,17 @@ const api = {
         .catch(error => reject(error))
     })
   },
+  getStorageInfo() {
+    return new Promise((resolve, reject) => {
+      axios.get('getstorageinfo')
+        .then(res => {
+          // set/update csrf token
+          axios.defaults.headers.common['x-csrf-token'] = res.headers['x-csrf-token']
+          resolve(res.data.data)
+        })
+        .catch(error => reject(error))
+    })
+  },
 }
 
 export default api

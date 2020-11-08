@@ -74,6 +74,11 @@ const data = {
   'Search': 'Search',
   'Download permission': 'Download',
   'Guest': 'Guest',
+  'Storage': 'Storage',
+  'Total Space': 'Total Space',
+  'Used Space': 'Used Space',
+  'Free Space': 'Free Space',
+  'Storage percent': 'Storage used at {0}%',
 }
 
 export default data

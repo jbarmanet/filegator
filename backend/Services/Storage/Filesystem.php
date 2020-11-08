@@ -12,6 +12,8 @@ namespace Filegator\Services\Storage;
 
 use Filegator\Services\Service;
 use League\Flysystem\Filesystem as Flysystem;
+use League\Flysystem\File;
+use Filegator\Config\Config;
 
 class Filesystem implements Service
 {
@@ -290,5 +292,26 @@ class Filesystem implements Service
         $tmp = explode($this->separator, trim($path, $this->separator));
 
         return  (string) array_pop($tmp);
+    }
+    
+    public function getRemainingSpace(string $path='') 
+    {
+        $used_space = $this->getUsedSpace();
+        $config_file = require __DIR__.'/../../../configuration.php';
+        $config = new Config($config_file);
+        $remains = $config->get('frontend_config.storage_max_space') - $used_space;
+        //return number_format($remains/ 1048576,2);
+        return $remains;
+    }
+    
+    public function getUsedSpace(string $path='') 
+    {
+        $file_size = 0;
+        foreach ($this->storage->listContents($this->applyPathPrefix($path), TRUE) as $entry) {
+            $size = isset($entry['size']) ? $entry['size'] : 0;
+            $file_size += $size;
+        }
+        //return number_format($file_size / 1048576,2);
+        return $file_size;
     }
 }

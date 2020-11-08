@@ -191,4 +191,11 @@ class FileController
 
         return $response->json('Done');
     }
+    
+    public function storageInfo(Request $request, Response $response)
+    {
+        $used = $this->storage->getUsedSpace();
+        $total = $this->config->get('frontend_config.storage_max_space');
+        return $response->json(['total' => $total, 'used' => $used]);
+    }
 }
