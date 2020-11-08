@@ -30,3 +30,6 @@ tags
 *.njsproj
 *.sln
 *.sw*
+.nova
+.nova/*
+instructions.txt
