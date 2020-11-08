@@ -1,0 +1,42 @@
+
+Déploiement d'OSTIN File Manager sur un nouveau serveur :
+
+##########################
+#  Installation
+##########################
+
+1) Uploader l'ensemble des fichiers et dossiers de l'archive sur le serveur 
+2) Pointer le document root du serveur dans le dossier /dist
+3) S'assurer que le serveur a les droits d'écriture sur le dossier /private et ses sous-dossiers
+4) S'assurer que le serveur a les droits d'écriture sur le dossier /repository 
+
+
+##########################
+#  Configuration 
+##########################
+
+Les principaux paramètres sont modifiables dans le fichier /configuration.php, et en paticulier : 
+	- storage_max_space : espace total maximum alloué à l'outil, en bytes
+	- upload_max_size : taille maximum autorisée par fichier, en bytes
+	
+
+##########################
+#  Comptes utilisateurs
+##########################
+	 
+Le compte admin principal par défaut est admin / admin123 
+
+Le fichier /private/users.json contient les utilisateurs enregistrés et peut être recréé en cas de perte à partir du modèle /private/users.json.blank 
+
+Un compte spécial invité "Guest" est désactivé par défaut. On peut l'activer dans users.json en lui créant un mot de passe. Astuce : pour générer le hash d'un mot de passe = créer un utilisateur temporaire avec un mot de passe, récupérer le hash dans le fichier /private/users.json et le copier ailleurs, puis supprimer cet utilisateur temporaire. 
+
+
+##########################
+#  Plus d'infos
+##########################
+
+Pour plus d'informations voir FileGator, source du projet.
+https://docs.filegator.io/index.html 
+
+
+
